@@ -15,9 +15,9 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  analytics_project:
+  astrafy_takehome:
     staging:
       +schema: astrafy
 
     marts:
-      +schema: marts
+      +schema: astrafy
