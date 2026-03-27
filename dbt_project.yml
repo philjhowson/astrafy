@@ -17,7 +17,7 @@ clean-targets:
 models:
   analytics_project:
     staging:
-      +schema: staging
+      +schema: dbt_phowson
 
     marts:
       +schema: marts
