@@ -20,7 +20,7 @@ with history as (
     o1.customer_id,
     o1.order_date,
     count(o2.orders_id) as orders_last_12m
-  from {{ref('product_quantity')}}
+  from {{ref('stg_orders')}}
   left join {{ref('stg_orders')}} o2
     on o1.customers_id = o2.customers_id
     and o2.order_date < o1.order_date
