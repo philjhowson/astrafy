@@ -1,4 +1,5 @@
 /*
+Question #2:
 extracts each month in 2023 as month and groups
 orders by month and counts them. Returns
 the counts by month in order. I used format_date()
