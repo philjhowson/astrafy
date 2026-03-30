@@ -8,4 +8,4 @@ select date_date as order_date,
   products_id as product_id,
   net_sales,
   qty as quantity
-from {{ source('astrafy','sales') }}
+from {{source('astrafy','sales')}}
