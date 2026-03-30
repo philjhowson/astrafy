@@ -9,8 +9,8 @@ instead of extract.
 
 select format_date('%Y-%m', order_date) as month,
   count(*) as total_orders
-from {{ ref('stg_orders') }}
-where date_date >= '2023-01-01'
-  and date_date < '2024-01-01'
+from {{ref('stg_orders')}}
+where order_date >= '2023-01-01'
+  and order_date < '2024-01-01'
 group by month
 order by month

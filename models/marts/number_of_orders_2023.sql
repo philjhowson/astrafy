@@ -5,5 +5,5 @@ applying a date filter.
 */
 select count(*)
 from {{ ref('stg_orders') }}
-where date_date >= '2023-01-01' -- query for year 2023
-  and date_date < '2024-01-01'
+where order_date >= '2023-01-01' -- query for year 2023
+  and order_date < '2024-01-01'
