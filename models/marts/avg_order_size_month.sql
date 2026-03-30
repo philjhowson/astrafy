@@ -1,7 +1,7 @@
 /*
-this simply takes the data from the joined table
-made and filters it for 2023. I kept
-3 decimal places for percision in any downstream
+Groups the joined table 'product_quantity' by month
+to calculate the average quantity per order per month.
+I kept 3 decimal places for percision in any downstream
 tasks, even though you can't have a part of a product
 in a real order.
 */
