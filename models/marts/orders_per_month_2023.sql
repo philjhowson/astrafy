@@ -7,9 +7,9 @@ here because it's a slightly more readable output,
 instead of extract.
 */
 
-select format_date('%Y-%m', date_date) as month,
+select format_date('%Y-%m', order_date) as month,
   count(*) as total_orders
-from {{ source('astrafy','orders') }}
+from {{ ref('stg_orders') }}
 where date_date >= '2023-01-01'
   and date_date < '2024-01-01'
 group by month
