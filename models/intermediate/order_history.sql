@@ -1,5 +1,4 @@
 /*
-Question #5:
 This is used to generate order history for users in 2023 and assign each
 order the following details:
 
@@ -15,20 +14,13 @@ the 12 months prior to this order, the customer had already placed at
 least 4 orders or more
 */
 
-with orders_2023 as (
-  select *
-  from {{ref('stg_orders')}}
-  where order_date >= '2023-01-01'
-    and order_date < '2024-01-01'
-),
-
-history as (
+with history as (
   select
     o1.order_id,
     o1.customer_id,
     o1.order_date,
     count(o2.orders_id) as orders_last_12m
-  from orders_2023 o1
+  from {{ref('product_quantity')}}
   left join {{ref('stg_orders')}} o2
     on o1.customers_id = o2.customers_id
     and o2.order_date < o1.order_date
@@ -43,5 +35,4 @@ select
     when orders_last_12m between 1 and 3 then 'Returning'
     else 'VIP'
   end as order_segmentation
-
 from history
