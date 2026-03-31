@@ -19,12 +19,12 @@ with history as (
     o1.order_id,
     o1.customer_id,
     o1.order_date,
-    count(o2.orders_id) as orders_last_12m
-  from {{ref('stg_orders')}}
+    count(o2.order_id) as orders_last_12m
+  from {{ref('stg_orders')}} o1
   left join {{ref('stg_orders')}} o2
-    on o1.customers_id = o2.customers_id
+    on o1.customer_id = o2.customer_id
     and o2.order_date < o1.order_date
-    and o2.order_date >= date_sub(o1.order_date, interval 12 month)
+    and o2.order_date >= date_sub(o1.order_date, interval 12 month) -- rolling window that keeps all orders within the last 12 months of the current order
   group by o1.order_id, o1.customer_id, o1.order_date
 )
 

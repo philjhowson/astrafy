@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: customer_segment
+
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
