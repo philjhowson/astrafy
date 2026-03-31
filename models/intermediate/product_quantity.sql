@@ -25,7 +25,7 @@ select o.order_date,
   p.qty_product,
   o.net_sales
 from {{ref('stg_orders')}} o
-join product_quantity p
+left join product_quantity p
   on o.order_id = p.order_id
 where order_date >= '2022-01-01'
     and order_date < '2024-01-01'

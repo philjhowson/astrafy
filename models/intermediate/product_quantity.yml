@@ -4,7 +4,6 @@ models:
   - name: product_quantity
 
     columns:
-      - name: order_id
+      - name: qty_product
         tests:
           - not_null
-          - unique
