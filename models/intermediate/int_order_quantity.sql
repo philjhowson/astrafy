@@ -14,10 +14,7 @@ with product_quantity as (
 /*
 this joins the product_quantity table to the
 orders table to get the total order quantity
-for each order as a column. I put 2021-2023 as
-a filter more as a potential edge case, where
-new data could come in and it is earlier or
-later than those years.
+for each order as a column.
 */
 
 select o.order_date, 
@@ -28,5 +25,3 @@ select o.order_date,
 from {{ref('stg_orders')}} o
 left join product_quantity p
   on o.order_id = p.order_id
-where order_date >= '2022-01-01'
-    and order_date < '2024-01-01'
