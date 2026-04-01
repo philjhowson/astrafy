@@ -1,9 +1,12 @@
 version: 2
 
 models:
-  - name: customer_segment
+  - name: int_order_quantity
 
     columns:
+      - name: qty_product
+        tests:
+          - not_null
       - name: order_id
         tests:
           - not_null
