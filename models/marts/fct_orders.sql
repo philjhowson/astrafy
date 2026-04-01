@@ -1,6 +1,6 @@
 /*
 this is the final fact table for orders that will
-be used to expose metrics and dimensions with
+be used to expose measures and dimensions with
 looker.
 */
 
@@ -13,5 +13,5 @@ select o.order_date,
 from {{ref('int_order_quantity')}} o
 join {{ref('int_customer_segment')}} s 
     using(order_id)
-where order_date between '2022-01-01'
+where order_date between '2023-01-01'
     and '2023-12-31'
