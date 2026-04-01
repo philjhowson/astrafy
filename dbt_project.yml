@@ -1,6 +1,6 @@
 name: "astrafy_takehome"
-version: "1.0.0"
-config-version: 2
+version: "1.3.0"
+config-version: 1
 
 profile: "BigQuery"
 
@@ -16,11 +16,13 @@ clean-targets:
 
 models:
   astrafy_takehome:
+    +schema: analytics
+    
     staging:
-      +schema: staging
+      +materialized: view
 
     intermediate:
-      +schema: analytics
+      +materialized: view
 
     marts:
-      +schema: analytics
+      +materialized: table
