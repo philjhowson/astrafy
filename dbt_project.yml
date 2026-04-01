@@ -17,7 +17,10 @@ clean-targets:
 models:
   astrafy_takehome:
     staging:
-      +schema: astrafy
+      +schema: staging
+
+    intermediate:
+      +schema: analytics
 
     marts:
-      +schema: astrafy
+      +schema: analytics
