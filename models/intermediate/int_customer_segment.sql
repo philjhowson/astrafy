@@ -55,4 +55,4 @@ select
     else 'VIP'
   end as segment
 
-from base o1
+from orders o1

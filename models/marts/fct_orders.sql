@@ -13,5 +13,5 @@ select o.order_date,
 from {{ref('int_order_quantity')}} o
 join {{ref('int_customer_segment')}} s 
     using(order_id)
-where order_date between '2023-01-01'
+where o.order_date between '2023-01-01'
     and '2023-12-31'

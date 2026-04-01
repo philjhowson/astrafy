@@ -10,6 +10,6 @@ select order_date,
   order_id,
   product_id,
   qty
-from {{ref('stg_sales'))}}
+from {{ref('stg_sales')}}
 where order_date between '2023-01-01'
     and '2023-12-31'
