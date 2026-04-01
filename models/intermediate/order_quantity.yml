@@ -7,3 +7,7 @@ models:
       - name: qty_product
         tests:
           - not_null
+      - name: order_id
+        tests:
+          - not_null
+          - unique
