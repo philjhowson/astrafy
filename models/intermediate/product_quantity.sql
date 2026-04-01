@@ -5,7 +5,7 @@ of products for each order for downstream use.
 
 with product_quantity as (
   select order_id,
-    sum(quantity) as qty_product
+    sum(qty) as qty_product
   from {{ref('stg_sales')}}
   group by order_id
 )

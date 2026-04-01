@@ -7,5 +7,5 @@ select date_date as order_date,
   order_id,
   products_id as product_id,
   net_sales,
-  qty as quantity
+  qty
 from {{source('astrafy','sales')}}
