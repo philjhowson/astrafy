@@ -88,7 +88,7 @@ It establishes a reusable foundation for all order-level KPIs used across the pr
 
 ### Customer Segmentation (Exercises 5–6)
 
-![Exercises 1-4](images/int_order_quantity_lineage.png)
+![Exercises 1-4](images/int_customer_segment_lineage.png)
 
 Customer segmentation is computed using a 12-month trailing window at the order grain, capturing historical purchase behavior per customer.
 
