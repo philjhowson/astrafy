@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: int_order_quantity
+
+    columns:
+      - name: qty_product
+        tests:
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+          - unique

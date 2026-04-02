@@ -1,0 +1,10 @@
+#Defines raw source tables in BigQuery dataset 'astrafy'
+
+version: 2
+
+sources:
+  - name: astrafy
+    schema: astrafy
+    tables:
+      - name: orders
+      - name: sales
