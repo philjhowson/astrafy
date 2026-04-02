@@ -1,6 +1,6 @@
 /*
 This is completed in customer_segment, although
-it still requires a where filter to get the
+it still requires a filter to get the
 selected date range.
 */
 

@@ -4,7 +4,6 @@ Then the average is calculated for each month to
 potential downstream tasks.
 */
 
-
 select format_date('%Y-%m', order_date) as month,
   round(avg(qty_product), 3) as average_quantity,
 from {{ref('int_order_quantity')}}
