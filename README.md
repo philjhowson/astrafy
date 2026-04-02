@@ -1,89 +1,169 @@
 ![Astrafy](images/astrafy.png)
 
-The files in this repository present my solutions to the coding and LookML challenges
-for the Data Analyst Engineer role at Astrafy. The coding challenge solutions can be
-found under the analyses folders and the lookML files can be found under the 
-lookml_project folder. The folder structure and .sql files were all developed in dbt
-to facilitate version control, replicability, and auditability. There are a few
-tests as well that I designed in .yml files to ensure data integrity at different
-stages of development.
+# 📊 Case Study: dbt + Looker Analytics Pipeline for Customer & Sales Intelligence
+
+This project demonstrates the design and implementation of a modular analytics engineering stack using **dbt and Looker**, built to transform raw transactional data into a reliable analytics layer for customer behavior and sales performance analysis across 2022–2023.
+
+The system delivers:
+• a structured and tested **data warehouse model (dbt)**
+• a reusable **semantic layer (LookML)**
+• and an interactive **dashboard (Looker Studio)**
+
+Key focus areas include:
+• layered data modeling (staging → intermediate → marts)
+• reusable business logic (customer segmentation, order metrics)
+• data quality testing and validation
+• BI-ready semantic definitions
+
+---
+
+## Problem Statement
+
+The objective of this project was to design an analytics system that enables:
+
+• analysis of customer lifecycle behavior (New, Returning, VIP)
+• tracking of sales performance across 2022–2023
+• consistent KPI definitions across reporting layers
+
+The raw dataset lacked:
+• standardized structure across tables
+• reusable transformation logic
+• analytical modeling for BI consumption
+
+---
+
+## Data Architecture & Design
+
+The project follows a layered **dbt architecture** designed to ensure modularity, scalability, and maintainability.
+
+### Staging Layer
+Raw source tables were standardized in:
+• `stg_orders`
+• `stg_sales`
+
+These models:
+• normalize field names and data types
+• define a consistent analytical grain
+• provide a clean interface over raw sources
+
+This ensures downstream models are not dependent on source system inconsistencies.
+
+---
+
+### Intermediate Layer
+Reusable business logic is centralized in intermediate models:
+
+• `int_order_quantity`
+• `int_customer_segment`
+
+These models:
+• encapsulate transformations used across multiple analyses
+• prevent duplication of logic
+• serve as a semantic bridge between staging and marts
+
+---
+
+### Mart Layer
+Final analytical tables are exposed through:
+
+• `fct_orders`
+• `fct_sales`
+
+These marts are optimized for BI consumption and are designed to support:
+• performance analysis
+• customer analytics
+• product-level reporting
+
+---
+
+## 📐 Key Analytical Logic
+
+### Customer Segmentation
+
+Customer behavior is modeled using a **12-month trailing rolling window at the order grain**, calculating prior purchase frequency per customer.
+
+This metric is used to classify customers into:
+• New
+• Returning
+• VIP
+
+based on historical purchase behavior intensity.
+
+---
+
+## 📊 Looker Studio Dashboard
+
+I designed the Looker Studio dashboard to expose key metrics from Exercises 1–6 in a cohesive analytical narrative.
+
+The dashboard highlights:
+• KPI performance trends
+• customer behavior differences
+• revenue evolution across 2022–2023
+
+![Looker Studio Dashboard](images/looker_studio_dashboard.png)
+
+---
+
+## Semantic Layer (LookML)
+
+A LookML semantic layer was implemented to ensure consistent metric definitions across all dashboards and users.
+
+Two domain-specific explores were created:
+
+• `fct_orders`: customer and revenue analytics  
+• `fct_sales`: product-level performance analytics  
+
+This separation enables modular analysis across business domains while maintaining consistent definitions for key metrics such as:
+• average order value
+• revenue per customer
+• product-level contribution
+
+---
+
+## Data Quality & Testing Strategy
+
+To ensure reliability of transformations, dbt schema tests were implemented across all layers:
+
+• uniqueness constraints on primary keys
+• non-null validation for critical dimensions
+• referential integrity between staging and intermediate models
+
+These tests ensure data consistency and prevent silent failures in downstream analytics workflows.
+
+---
 
 ## Project Organization
+
     root
-    ├── analyses # contains the .sql files for the coding exercises
+    ├── analyses
     │   ├── exercise_1.sql
     │   ├── exercise_2.sql
     │   ├── exercise_3.sql
     │   ├── exercise_4.sql
     │   ├── exercise_5.sql
     │   └── exercise_6.sql
-    ├── images # images used in the readme.md file
+    ├── images
     ├── lookml_project
-    │   ├── models # explores
-    │   │    └── astrafy.model.lkml # explores for fct_orders and fct_sales
-    │   └── views # defines dimensions and exposes measures
+    │   ├── models
+    │   │    └── astrafy.model.lkml
+    │   └── views
     │        ├── fct_orders.view.lkml
     │        └── fct_sales.view.lkml
-    ├── macros # .sql to be executed by dbt
-    │   └── generate_schema_name.sql # ensures the correct dataset name is created
-    ├── models # sql used to create staging, intermediate, and marts
-    │   ├── intermediate # .sql and .yml files for creation and testing
+    ├── macros
+    │   └── generate_schema_name.sql
+    ├── models
+    │   ├── intermediate
     │   │    ├── int_customer_segments.sql
     │   │    ├── int_customer_segment.yml
     │   │    ├── int_order_quantity.sql
     │   │    └── int_order_quantity.yml
-    │   ├── marts # .sql used to generate the fact tables to be exposed to Looker
+    │   ├── marts
     │   │    ├── fct_orders.sql
     │   │    └── fct_sales.sql
-    │   └── staging # source configuration and staging files
+    │   └── staging
     │        ├── sources.yml
     │        ├── stg_orders.sql
-    │        └── stg_sales.yml    
+    │        └── stg_sales.yml
     ├── .gitignore
+    ├── dbt_project.yml
     └── README.md
-
-## Coding Challenge
-
-In order to answer the sets of questions the coding challenges required, I decided 
-it was better to create to reference tables, int_customer_segment.sql and
-int_order_quantity.sql, because these tables were reused multiple times with the sql
-to answer the questions.
-
-### Exercises 1-4
-
-![Lineage, ex. 1-4](images/int_order_quantity_lineage.png)
-
-The main view used to query everything from was generated by first querying the
-stg_sales view to get the sum of qty grouped by order_id to get qty_product.
-qty_product is the number of products for each unique order from 2022-2023.
-After that it was a straight forward solution to query the specific measures
-the coding challenges asked for, such as total number of orders in 2023 and so on.
-
-### Exercise 5-6
-
-![Lineage, ex. 5-6](images/int_customer_segment_lineage.png)
-
-First I generated the view int_customer_segment from the view stg_sales. To do this,
-I took order_id, customer_id, and order_date. Then I performed self joins with rolling
-windows for each row that counts the number of orders they placed in a maximum window
-of 12 months and labelled them as either new, returning, or VIP clients. After completing
-that view, it was just a matter of a filter or join to get the answers for ex. 5-6.
-
-## Looker Studio Dashboard
-
-I designed the Looker Studio Dashboard to primarily expose the metrics from Exercises 1-6
-in a cohesive story. The dashboard presents KPI and customer behaviour differences
-between 2022-2023.
-
-![Looker Studio Dashboard](images/looker_studio_dashboard.png)
-
-## LookML Semantic Layer
-
-For this assignment I made two explores, both accessible with astrafy.model.lkml. The two
-explores are based on fct_orders and fct_sales. The reason is that two cohesive dashboards
-could be built from this, either a presentation of revenue (fct_orders) or product (fct_sales).
-For both explores, I exposed different dimensions and measures to be used for analytics
-and presentation in fct_orders.view.lkml and fct_sales.view.lkml. The measures are
-designed to provide common KPIs such as average order value, average value per customer,
-and so on. Those metrics can be examined in a multitude of different granularities, depending
-on the needs of the client.
