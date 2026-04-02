@@ -76,6 +76,34 @@ These marts are optimized for BI consumption and are designed to support:
 
 ---
 
+## Applied Modeling (Business Logic Implementation)
+
+The following transformations demonstrate how the analytical requirements were implemented using dbt.
+These models represent the operationalization of the architecture described above, translating business requirements into reusable transformation logic.
+
+### Order-Level Metrics (Exercises 1–4)
+
+![Exercises 1-4](images/int_order_quantity_lineage.png)
+
+This model aggregates sales data at the order grain to compute product quantities and support downstream revenue and order-based analysis.
+
+It establishes a reusable foundation for all order-level KPIs used across the project.
+
+### Customer Segmentation (Exercises 5–6)
+
+![Exercises 1-4](images/int_order_quantity_lineage.png)
+
+Customer segmentation is computed using a 12-month trailing window at the order grain, capturing historical purchase behavior per customer.
+
+This logic enables classification into:
+• New
+• Returning
+• VIP
+
+and is reused across both BI dashboards and semantic layer definitions.
+
+---
+
 ## Key Analytical Logic
 
 ### Customer Segmentation
