@@ -67,6 +67,11 @@ Final analytical tables are exposed through:<br>
 • `fct_orders`<br>
 • `fct_sales`
 
+and have the following lineages:
+
+![fct_orders](images/fct_orders_lineage.png)
+![fct_sales](images/fct_sales_lineage.png)
+
 These marts are optimized for BI consumption and are designed to support:<br>
 • performance analysis<br>
 • customer analytics<br>
