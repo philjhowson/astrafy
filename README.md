@@ -8,7 +8,7 @@ built to transform raw transactional data into a reliable analytics layer for cu
 The system delivers:<br>
 • a structured and tested **data warehouse model (dbt)**<br>
 • a reusable **semantic layer (LookML)**<br>
-• and an interactive **dashboard (Looker Studio)**<br>
+• and a **dashboard (Looker Studio)**<br>
 
 Key focus areas include:<br>
 • layered data modeling (staging → intermediate → marts)<br>
