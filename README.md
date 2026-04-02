@@ -39,7 +39,7 @@ The project follows a layered **dbt architecture** designed to ensure modularity
 
 Raw source tables were standardized in:<br>
 • `stg_orders`<br>
-• `stg_sales`<br><br>
+• `stg_sales`
 
 These models:<br>
 • normalize field names and data types<br>
@@ -53,7 +53,7 @@ This ensures downstream models are not dependent on source system inconsistencie
 ### Intermediate Layer
 Reusable business logic is centralized in intermediate models:<br>
 • `int_order_quantity`<br>
-• `int_customer_segment`<br><br>
+• `int_customer_segment`
 
 These models:<br>
 • encapsulate transformations used across multiple analyses<br>
@@ -65,7 +65,7 @@ These models:<br>
 ### Mart Layer
 Final analytical tables are exposed through:<br>
 • `fct_orders`<br>
-• `fct_sales`<br><br>
+• `fct_sales`
 
 These marts are optimized for BI consumption and are designed to support:<br>
 • performance analysis<br>
@@ -95,7 +95,7 @@ Customer segmentation is computed using a 12-month trailing window at the order 
 This logic enables classification into:<br>
 • New<br>
 • Returning<br>
-• VIP<br><br>
+• VIP
 
 and is reused across both BI dashboards and semantic layer definitions.
 
@@ -108,7 +108,7 @@ I designed the Looker Studio dashboard to expose key metrics from Exercises 1–
 The dashboard highlights:<br>
 • KPI performance trends<br>
 • customer behavior differences<br>
-• revenue evolution across 2022–2023<br>
+• revenue evolution across 2022–2023
 
 ![Looker Studio Dashboard](images/looker_studio_dashboard.png)
 
@@ -120,12 +120,12 @@ A LookML semantic layer was implemented to ensure consistent metric definitions 
 
 Two domain-specific explores were created:<br>
 • `fct_orders`: customer and revenue analytics<br>  
-• `fct_sales`: product-level performance analytics<br><br>  
+• `fct_sales`: product-level performance analytics  
 
 This separation enables modular analysis across business domains while maintaining consistent definitions for key metrics such as:<br>
 • average order value<br>
 • revenue per customer<br>
-• product-level contribution<br>
+• product-level contribution
 
 ---
 
@@ -134,7 +134,7 @@ This separation enables modular analysis across business domains while maintaini
 To ensure reliability of transformations, dbt schema tests were implemented across all layers:<br>
 • uniqueness constraints on primary keys<br>
 • non-null validation for critical dimensions<br>
-• referential integrity between staging and intermediate models<br><br>
+• referential integrity between staging and intermediate models
 
 These tests ensure data consistency and prevent silent failures in downstream analytics workflows.
 
