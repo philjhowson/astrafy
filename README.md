@@ -4,30 +4,29 @@
 
 This project demonstrates the design and implementation of a modular analytics engineering stack using **dbt and Looker**, built to transform raw transactional data into a reliable analytics layer for customer behavior and sales performance analysis across 2022–2023.
 
-The system delivers:
-• a structured and tested **data warehouse model (dbt)**
-• a reusable **semantic layer (LookML)**
-• and an interactive **dashboard (Looker Studio)**
+The system delivers:<br>
+• a structured and tested **data warehouse model (dbt)**<br>
+• a reusable **semantic layer (LookML)**<br>
+• and an interactive **dashboard (Looker Studio)**<br>
 
-Key focus areas include:
-• layered data modeling (staging → intermediate → marts)
-• reusable business logic (customer segmentation, order metrics)
-• data quality testing and validation
+Key focus areas include:<br>
+• layered data modeling (staging → intermediate → marts)<br>
+• reusable business logic (customer segmentation, order metrics)<br>
+• data quality testing and validation<br>
 • BI-ready semantic definitions
 
 ---
 
 ## Problem Statement
 
-The objective of this project was to design an analytics system that enables:
+The objective of this project was to design an analytics system that enables:<br>
+• analysis of customer lifecycle behavior (New, Returning, VIP)<br>
+• tracking of sales performance across 2022–2023<br>
+• consistent KPI definitions across reporting layers<br><br>
 
-• analysis of customer lifecycle behavior (New, Returning, VIP)
-• tracking of sales performance across 2022–2023
-• consistent KPI definitions across reporting layers
-
-The raw dataset lacked:
-• standardized structure across tables
-• reusable transformation logic
+The raw dataset lacked:<br>
+• standardized structure across tables<br>
+• reusable transformation logic<br>
 • analytical modeling for BI consumption
 
 ---
@@ -37,43 +36,40 @@ The raw dataset lacked:
 The project follows a layered **dbt architecture** designed to ensure modularity, scalability, and maintainability.
 
 ### Staging Layer
-Raw source tables were standardized in:
-• `stg_orders`
-• `stg_sales`
 
-These models:
-• normalize field names and data types
-• define a consistent analytical grain
-• provide a clean interface over raw sources
+Raw source tables were standardized in:<br>
+• `stg_orders`<br>
+• `stg_sales`<br><br>
+
+These models:<br>
+• normalize field names and data types<br>
+• define a consistent analytical grain<br>
+• provide a clean interface over raw sources<br>
 
 This ensures downstream models are not dependent on source system inconsistencies.
 
 ---
 
 ### Intermediate Layer
-Reusable business logic is centralized in intermediate models:
+Reusable business logic is centralized in intermediate models:<br>
+• `int_order_quantity`<br>
+• `int_customer_segment`<br><br>
 
-• `int_order_quantity`
-• `int_customer_segment`
-
-These models:
-
-• encapsulate transformations used across multiple analyses
-• prevent duplication of logic
+These models:<br>
+• encapsulate transformations used across multiple analyses<br>
+• prevent duplication of logic<br>
 • serve as a semantic bridge between staging and marts
 
 ---
 
 ### Mart Layer
-Final analytical tables are exposed through:
+Final analytical tables are exposed through:<br>
+• `fct_orders`<br>
+• `fct_sales`<br><br>
 
-• `fct_orders`
-• `fct_sales`
-
-These marts are optimized for BI consumption and are designed to support:
-
-• performance analysis
-• customer analytics
+These marts are optimized for BI consumption and are designed to support:<br>
+• performance analysis<br>
+• customer analytics<br>
 • product-level reporting
 
 ---
@@ -88,7 +84,6 @@ These models represent the operationalization of the architecture described abov
 ![Exercises 1-4](images/int_order_quantity_lineage.png)
 
 This model aggregates sales data at the order grain to compute product quantities and support downstream revenue and order-based analysis.
-
 It establishes a reusable foundation for all order-level KPIs used across the project.
 
 ### Customer Segmentation (Exercises 5–6)
@@ -97,11 +92,10 @@ It establishes a reusable foundation for all order-level KPIs used across the pr
 
 Customer segmentation is computed using a 12-month trailing window at the order grain, capturing historical purchase behavior per customer.
 
-This logic enables classification into:
-
-• New
-• Returning
-• VIP
+This logic enables classification into:<br>
+• New<br>
+• Returning<br>
+• VIP<br><br>
 
 and is reused across both BI dashboards and semantic layer definitions.
 
@@ -111,10 +105,10 @@ and is reused across both BI dashboards and semantic layer definitions.
 
 I designed the Looker Studio dashboard to expose key metrics from Exercises 1–6 in a cohesive analytical narrative.
 
-The dashboard highlights:
-• KPI performance trends
-• customer behavior differences
-• revenue evolution across 2022–2023
+The dashboard highlights:<br>
+• KPI performance trends<br>
+• customer behavior differences<br>
+• revenue evolution across 2022–2023<br>
 
 ![Looker Studio Dashboard](images/looker_studio_dashboard.png)
 
@@ -124,26 +118,23 @@ The dashboard highlights:
 
 A LookML semantic layer was implemented to ensure consistent metric definitions across all dashboards and users.
 
-Two domain-specific explores were created:
+Two domain-specific explores were created:<br>
+• `fct_orders`: customer and revenue analytics<br>  
+• `fct_sales`: product-level performance analytics<br><br>  
 
-• `fct_orders`: customer and revenue analytics  
-• `fct_sales`: product-level performance analytics  
-
-This separation enables modular analysis across business domains while maintaining consistent definitions for key metrics such as:
-
-• average order value
-• revenue per customer
-• product-level contribution
+This separation enables modular analysis across business domains while maintaining consistent definitions for key metrics such as:<br>
+• average order value<br>
+• revenue per customer<br>
+• product-level contribution<br>
 
 ---
 
 ## Data Quality & Testing Strategy
 
-To ensure reliability of transformations, dbt schema tests were implemented across all layers:
-
-• uniqueness constraints on primary keys
-• non-null validation for critical dimensions
-• referential integrity between staging and intermediate models
+To ensure reliability of transformations, dbt schema tests were implemented across all layers:<br>
+• uniqueness constraints on primary keys<br>
+• non-null validation for critical dimensions<br>
+• referential integrity between staging and intermediate models<br><br>
 
 These tests ensure data consistency and prevent silent failures in downstream analytics workflows.
 
