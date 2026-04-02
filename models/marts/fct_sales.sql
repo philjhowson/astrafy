@@ -6,9 +6,9 @@ table is so that detailed product analytics can be
 performed in looker after exposing measures from this table. 
 */
 
-select order_date,
+SELECT order_date,
   customer_id,
   order_id,
   product_id,
   qty
-from {{ref('stg_sales')}}
+FROM {{ref('stg_sales')}}
