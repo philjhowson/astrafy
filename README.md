@@ -112,7 +112,8 @@ and is reused across both BI dashboards and semantic layer definitions.
 
 ## Looker Studio Dashboard
 
-I designed the Looker Studio dashboard to expose key metrics from Exercises 1–6 in a cohesive analytical narrative.
+I designed the [Looker Studio dashboard](https://lookerstudio.google.com/reporting/906367ae-e7b2-4141-842b-867212253813) to
+expose key metrics from Exercises 1–6 in a cohesive analytical narrative.
 
 The dashboard highlights:<br>
 • KPI performance trends<br>
