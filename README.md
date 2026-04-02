@@ -135,23 +135,23 @@ These tests ensure data consistency and prevent silent failures in downstream an
 ## Project Organization
 
     root
-    ├── analyses
+    ├── analyses # contains the sql used to solve coding challenges
     │   ├── exercise_1.sql
     │   ├── exercise_2.sql
     │   ├── exercise_3.sql
     │   ├── exercise_4.sql
     │   ├── exercise_5.sql
     │   └── exercise_6.sql
-    ├── images
-    ├── lookml_project
+    ├── images # contains images used in readme.md
+    ├── lookml_project # contains the relevant .lkml files for explores and exposing dimensions/measures
     │   ├── models
     │   │    └── astrafy.model.lkml
     │   └── views
     │        ├── fct_orders.view.lkml
     │        └── fct_sales.view.lkml
-    ├── macros
+    ├── macros # ensures consistent database naming
     │   └── generate_schema_name.sql
-    ├── models
+    ├── models # contains models and tests used in the dbt pipeline
     │   ├── intermediate
     │   │    ├── int_customer_segments.sql
     │   │    ├── int_customer_segment.yml
@@ -163,7 +163,7 @@ These tests ensure data consistency and prevent silent failures in downstream an
     │   └── staging
     │        ├── sources.yml
     │        ├── stg_orders.sql
-    │        └── stg_sales.yml
+    │        └── stg_sales.sql
     ├── .gitignore
     ├── dbt_project.yml
     └── README.md
