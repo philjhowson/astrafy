@@ -18,41 +18,30 @@ with orders as (
   select
     order_id,
     customer_id,
-    order_date
-  from {{ref('stg_orders')}}
+    date(order_date) as order_date
+  from {{ ref('stg_orders') }}
+),
+
+history as (
+  select
+    o1.*,
+
+    (
+      select count(*)
+      from orders o2
+      where o2.customer_id = o1.customer_id
+        and o2.order_date < o1.order_date
+        and o2.order_date >= date_sub(o1.order_date, interval 12 month)
+    ) as orders_last_12m
+
+  from orders o1
 )
 
 select
-  o1.order_id,
-  o1.customer_id,
-  o1.order_date,
-
-  (
-    select count(*)
-    from orders o2
-    where o2.customer_id = o1.customer_id
-      and o2.order_date < o1.order_date
-      and o2.order_date >= date_sub(o1.order_date, interval 12 month)
-  ) as orders_last_12m,
-
+  *,
   case
-    when (
-      select count(*)
-      from orders o2
-      where o2.customer_id = o1.customer_id
-        and o2.order_date < o1.order_date
-        and o2.order_date >= date_sub(o1.order_date, interval 12 month)
-    ) = 0 then 'New'
-
-    when (
-      select count(*)
-      from orders o2
-      where o2.customer_id = o1.customer_id
-        and o2.order_date < o1.order_date
-        and o2.order_date >= date_sub(o1.order_date, interval 12 month)
-    ) between 1 and 3 then 'Returning'
-
+    when orders_last_12m = 0 then 'New'
+    when orders_last_12m between 1 and 3 then 'Returning'
     else 'VIP'
   end as segment
-
-from orders o1
+from history
