@@ -1,6 +1,6 @@
 ![Astrafy](images/astrafy.png)
 
-# 📊 Case Study: dbt + Looker Analytics Pipeline for Customer & Sales Intelligence
+# Case Study: dbt + Looker Analytics Pipeline for Customer & Sales Intelligence
 
 This project demonstrates the design and implementation of a modular analytics engineering stack using **dbt and Looker**, built to transform raw transactional data into a reliable analytics layer for customer behavior and sales performance analysis across 2022–2023.
 
