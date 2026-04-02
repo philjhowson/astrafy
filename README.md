@@ -22,7 +22,7 @@ Key focus areas include:<br>
 The objective of this project was to design an analytics system that enables:<br>
 • analysis of customer lifecycle behavior (New, Returning, VIP)<br>
 • tracking of sales performance across 2022–2023<br>
-• consistent KPI definitions across reporting layers<br><br>
+• consistent KPI definitions across reporting layers<br>
 
 The raw dataset lacked:<br>
 • standardized structure across tables<br>
