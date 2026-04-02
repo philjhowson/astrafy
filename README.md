@@ -2,7 +2,8 @@
 
 # Case Study: dbt + Looker Analytics Pipeline for Customer & Sales Intelligence
 
-This project demonstrates the design and implementation of a modular analytics engineering stack using **dbt and Looker**, built to transform raw transactional data into a reliable analytics layer for customer behavior and sales performance analysis across 2022–2023.
+This project demonstrates the design and implementation of a modular analytics engineering stack using **dbt and Looker**,
+built to transform raw transactional data into a reliable analytics layer for customer behavior and sales performance analysis across 2022–2023.
 
 The system delivers:<br>
 • a structured and tested **data warehouse model (dbt)**<br>
@@ -159,7 +160,7 @@ These tests ensure data consistency and prevent silent failures in downstream an
     │   ├── exercise_5.sql
     │   └── exercise_6.sql
     ├── images # contains images used in readme.md
-    ├── lookml_project # contains the relevant .lkml files for explores and exposing dimensions/measures
+    ├── lookml_project # contains the relevant .lkml files for explores
     │   ├── models
     │   │    └── astrafy.model.lkml
     │   └── views
@@ -175,10 +176,13 @@ These tests ensure data consistency and prevent silent failures in downstream an
     │   │    └── int_order_quantity.yml
     │   ├── marts
     │   │    ├── fct_orders.sql
+    │   │    ├── fct.orders.yml
     │   │    └── fct_sales.sql
     │   └── staging
     │        ├── sources.yml
     │        ├── stg_orders.sql
+    │        ├── stg_orders.yml
+    │        ├── stg_sales.sql
     │        └── stg_sales.sql
     ├── .gitignore
     ├── dbt_project.yml
