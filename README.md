@@ -76,7 +76,7 @@ These marts are optimized for BI consumption and are designed to support:
 
 ---
 
-## 📐 Key Analytical Logic
+## Key Analytical Logic
 
 ### Customer Segmentation
 
@@ -91,7 +91,7 @@ based on historical purchase behavior intensity.
 
 ---
 
-## 📊 Looker Studio Dashboard
+## Looker Studio Dashboard
 
 I designed the Looker Studio dashboard to expose key metrics from Exercises 1–6 in a cohesive analytical narrative.
 
