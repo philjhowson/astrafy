@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fct_orders
+
+    columns:
+      - name: order_segmentation
+        tests:
+          - not_null
+      - name: qty_product
+        tests:
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+          - unique
