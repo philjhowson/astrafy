@@ -57,6 +57,7 @@ Reusable business logic is centralized in intermediate models:
 • `int_customer_segment`
 
 These models:
+
 • encapsulate transformations used across multiple analyses
 • prevent duplication of logic
 • serve as a semantic bridge between staging and marts
@@ -70,6 +71,7 @@ Final analytical tables are exposed through:
 • `fct_sales`
 
 These marts are optimized for BI consumption and are designed to support:
+
 • performance analysis
 • customer analytics
 • product-level reporting
@@ -96,26 +98,12 @@ It establishes a reusable foundation for all order-level KPIs used across the pr
 Customer segmentation is computed using a 12-month trailing window at the order grain, capturing historical purchase behavior per customer.
 
 This logic enables classification into:
+
 • New
 • Returning
 • VIP
 
 and is reused across both BI dashboards and semantic layer definitions.
-
----
-
-## Key Analytical Logic
-
-### Customer Segmentation
-
-Customer behavior is modeled using a **12-month trailing rolling window at the order grain**, calculating prior purchase frequency per customer.
-
-This metric is used to classify customers into:
-• New
-• Returning
-• VIP
-
-based on historical purchase behavior intensity.
 
 ---
 
@@ -142,6 +130,7 @@ Two domain-specific explores were created:
 • `fct_sales`: product-level performance analytics  
 
 This separation enables modular analysis across business domains while maintaining consistent definitions for key metrics such as:
+
 • average order value
 • revenue per customer
 • product-level contribution
