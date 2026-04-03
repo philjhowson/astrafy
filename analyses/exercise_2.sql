@@ -1,5 +1,5 @@
 /*
-Sum number of products orders are calculated for
+Sums number of products orders are calculated for
 each month.
 */
 
