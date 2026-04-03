@@ -1,7 +1,6 @@
 /*
-here, I basically join the results for 5, taking only
-the segment column as order_segmentation and joining
-with the orders table.
+I tkae the segment column as order_segmentation
+and join with the orders table. Filtered on date.
 */
 
 SELECT o.order_date, 

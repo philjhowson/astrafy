@@ -1,6 +1,7 @@
 /*
-This table that answers this exercise 
-is int_order_quantity.
+int_order_quantity answers this question
+directly, but I reproduced it here for
+posterity.
 */
 
 SELECT *

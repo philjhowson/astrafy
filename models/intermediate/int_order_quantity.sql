@@ -1,7 +1,6 @@
 /*
-CTE for readability, but it basically just takes
-every order and groups them by id and sums how
-many products are ordered in total for this order.
+Takes every order and groups them by id and sums how
+many products are ordered in total for each order.
 */
 
 WITH product_quantity AS (
@@ -12,7 +11,7 @@ WITH product_quantity AS (
 )
 
 /*
-this joins the product_quantity table to the
+Joins the product_quantity table to the
 orders table to get the total order quantity
 for each order as a column.
 */

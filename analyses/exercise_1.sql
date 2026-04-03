@@ -1,5 +1,5 @@
 /*
-counts the number of orders in year 2023 by
+Counts the number of orders in year 2023 by
 applying a date filter.
 */
 
