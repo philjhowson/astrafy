@@ -43,8 +43,7 @@ Raw source tables were standardized in:<br>
 • `stg_sales`
 
 These models:<br>
-• normalize field names and data types<br>
-• define a consistent analytical grain<br>
+• normalize field names<br>
 • provide a clean interface over raw sources<br>
 
 This ensures downstream models are not dependent on source system inconsistencies.
@@ -116,9 +115,9 @@ I designed the [Looker Studio dashboard](https://lookerstudio.google.com/reporti
 expose key metrics from Exercises 1–6 in a cohesive analytical narrative.
 
 The dashboard highlights:<br>
-• KPI performance trends<br>
-• customer behavior differences<br>
-• revenue evolution across 2022–2023
+• KPI performance<br>
+• customer segmentation<br>
+• sales evolution during 2023
 
 ![Looker Studio Dashboard](images/looker_studio_dashboard.png)
 
