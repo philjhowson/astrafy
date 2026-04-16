@@ -1,4 +1,4 @@
-name: "astrafy_takehome"
+name: "phiture_takehome"
 version: "1.3.0"
 config-version: 1
 
@@ -15,7 +15,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  astrafy_takehome:
+  phiture_takehome:
     +schema: analytics
     
     staging:
